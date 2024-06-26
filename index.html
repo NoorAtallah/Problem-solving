@@ -1,0 +1,225 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      function reverseArrayUsingStack(arr) {
+ 
+    let stack = [];
+
+    
+    for (let i = 0; i < arr.length; i++) {
+        stack.push(arr[i]);
+    }
+
+   
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = stack.pop();
+    }
+}
+
+
+let arr = [1, 2, 3, 4, 5];
+console.log("Original array:", arr);
+
+reverseArrayUsingStack(arr);
+console.log("Reversed array:", arr);
+
+
+//Q2
+let stack1 =[]
+let stack2=[]
+
+function enqueue(arr){
+    stack1.push(arr); 
+        console.log("Stack-1 array are enqueue: ", stack1); 
+    } 
+  
+    function dequeue() { 
+        if (stack2.length === 0) { 
+            if (stack1.length === 0) { 
+                console.log( 
+            "Dequeue not possible because queue is empty.."); 
+            } 
+            while (stack1.length > 0) { 
+                let x = stack1.pop(); 
+                stack2.push(x); 
+            } 
+        } 
+        console.log("Element after Dequeue: " + stack2.pop()); 
+    } 
+    enqueue("a"); 
+    enqueue("b"); 
+    enqueue("c"); 
+    dequeue(); 
+    dequeue(); 
+
+    //Q3
+    function sumArray(arr_2) {
+    
+    if (arr_2.length === 0) {
+        return 0;
+    } else {
+       
+        return arr_2[0] + sumArray(arr_2.slice(1));
+    }
+}
+
+
+let arr_2 = [1, 2, 3, 4, 5];
+console.log("Sum of the array:", sumArray(arr_2)); 
+
+//Q4
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null;
+    }
+
+    
+    append(value) {
+        const newNode = new Node(value);
+        if (this.head === null) {
+            this.head = newNode;
+            return;
+        }
+        let current = this.head;
+        while (current.next !== null) {
+            current = current.next;
+        }
+        current.next = newNode;
+    }
+
+    
+    printList() {
+        let current = this.head;
+        let result = '';
+        while (current !== null) {
+            result += current.value + ' -> ';
+            current = current.next;
+        }
+        console.log(result + 'null');
+    }
+}
+
+function reverseLinkedList(list) {
+    let prev = null;
+    let current = list.head;
+    let next = null;
+
+    while (current !== null) {
+        next = current.next; 
+        current.next = prev;  
+        prev = current;      
+        current = next;
+    }
+    list.head = prev;  
+}
+
+
+let list = new LinkedList();
+list.append(1);
+list.append(2);
+list.append(3);
+list.append(4);
+list.append(5);
+
+console.log("Original LinkedList:");
+list.printList();
+
+reverseLinkedList(list);
+
+console.log("Reversed LinkedList:");
+list.printList();
+
+
+//Q5
+class Node_2 {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class LinkedList_2 {
+    constructor() {
+        this.head = null;
+    }
+
+    
+    append(value) {
+        const newNode = new Node_2(value);
+        if (this.head === null) {
+            this.head = newNode;
+            return;
+        }
+        let current = this.head;
+        while (current.next !== null) {
+            current = current.next;
+        }
+        current.next = newNode;
+    }
+
+   
+    printList() {
+        let current = this.head;
+        let result = '';
+        while (current !== null) {
+            result += current.value + ' -> ';
+            current = current.next;
+        }
+        console.log(result + 'null');
+    }
+}
+
+function deleteMiddleNode(list) {
+    if (list_2.head === null || list_2.head.next === null) {
+        
+        return list_2;
+    }
+
+    let slow = list_2.head;
+    let fast = list_2.head;
+    let prev = null;
+
+    
+    while (fast !== null && fast.next !== null) {
+        fast = fast.next.next;
+        prev = slow;
+        slow = slow.next;
+    }
+
+    
+    prev.next = slow.next; 
+
+    return list_2;
+}
+
+
+let list_2 = new LinkedList_2();
+list_2.append(1);
+list_2.append(2);
+list_2.append(3);
+list_2.append(4);
+list_2.append(5);
+
+console.log("Original LinkedList:");
+list_2.printList();
+
+deleteMiddleNode(list);
+
+console.log("LinkedList after deleting the middle node:");
+list_2.printList();
+
+    </script>
+</body>
+</html>
